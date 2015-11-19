@@ -3,17 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-<<<<<<< HEAD
 title: mylxiaoyi@notes
 subtitle:
 description:
 author: mylxiaoyi
-=======
-title: Hexo
-subtitle:
-description:
-author: John Doe
->>>>>>> bf3f4eae2f56c59f06c742264dfca81d21f9bcbe
 language: zh-Hans
 timezone:
 
@@ -35,11 +28,7 @@ i18n_dir: :lang
 skip_render:
 
 # Writing
-<<<<<<< HEAD
 new_post_name: :year-:month:-:day-:title.md # File name of new posts
-=======
-new_post_name: :title.md # File name of new posts
->>>>>>> bf3f4eae2f56c59f06c742264dfca81d21f9bcbe
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
@@ -82,7 +71,6 @@ theme: next
 deploy:
   type: git
   repo: https://github.com/mylxiaoyi/mylxiaoyi.github.io
-<<<<<<< HEAD
 
 # duoshuo
 duoshuo_shortname: hexo-github
@@ -94,5 +82,3 @@ avatar: /images/avatar.jpg
 social:
     GitHub: https://github.com/mylxiaoyi
     Weibo: http://weibo.com/2350724865
-=======
->>>>>>> bf3f4eae2f56c59f06c742264dfca81d21f9bcbe
