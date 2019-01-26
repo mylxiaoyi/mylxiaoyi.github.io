@@ -12,7 +12,8 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://localhost:4000
+#url: http://localhost:4000
+url: http://mylxiaoyi.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -73,7 +74,7 @@ deploy:
   repo: https://github.com/mylxiaoyi/mylxiaoyi.github.io
 
 # duoshuo
-duoshuo_shortname: hexo-github
+#duoshuo_shortname: hexo-github
 
 # avatar
 avatar: /images/avatar.jpg
