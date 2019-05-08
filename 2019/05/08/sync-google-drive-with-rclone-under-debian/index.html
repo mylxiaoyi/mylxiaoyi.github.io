@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Google Drive作为Google旗下的云盘服务，在互联网云盘服务相继关闭的今天，可谓硕果仅存的动云盘服务提供商之一，是网络用户之间进行文件交换与共享以及个人文件云备份的重要工具之一。Google Drive仅为Windows与MAC系统提供了官方客户端，而在Linux系统下则需要选用第三方的同步工具。rclone作为一款优秀的开源同步工具，可以为Google Drive文件的同步提供良好支">
+  <meta name="description" content="Google Drive作为Google旗下的云盘服务，在互联网云盘服务相继关闭的今天，可谓硕果仅存的云盘服务提供商之一，是网络用户之间进行文件交换与共享以及个人文件云备份的重要工具之一。Google Drive仅为Windows与MAC系统提供了官方客户端，而在Linux系统下则需要选用第三方的同步工具。rclone作为一款优秀的开源同步工具，可以为Google Drive文件的同步提供良好支持">
 <meta name="keywords" content="debian,rclone,google drive">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在Debian系统下使用rclone同步Google Drive文件">
 <meta property="og:url" content="http://mylxiaoyi.github.io/2019/05/08/sync-google-drive-with-rclone-under-debian/index.html">
 <meta property="og:site_name" content="mylxiaoyi@notes">
-<meta property="og:description" content="Google Drive作为Google旗下的云盘服务，在互联网云盘服务相继关闭的今天，可谓硕果仅存的动云盘服务提供商之一，是网络用户之间进行文件交换与共享以及个人文件云备份的重要工具之一。Google Drive仅为Windows与MAC系统提供了官方客户端，而在Linux系统下则需要选用第三方的同步工具。rclone作为一款优秀的开源同步工具，可以为Google Drive文件的同步提供良好支">
+<meta property="og:description" content="Google Drive作为Google旗下的云盘服务，在互联网云盘服务相继关闭的今天，可谓硕果仅存的云盘服务提供商之一，是网络用户之间进行文件交换与共享以及个人文件云备份的重要工具之一。Google Drive仅为Windows与MAC系统提供了官方客户端，而在Linux系统下则需要选用第三方的同步工具。rclone作为一款优秀的开源同步工具，可以为Google Drive文件的同步提供良好支持">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-08T13:42:34.626Z">
+<meta property="og:updated_time" content="2019-05-08T13:49:33.946Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Debian系统下使用rclone同步Google Drive文件">
-<meta name="twitter:description" content="Google Drive作为Google旗下的云盘服务，在互联网云盘服务相继关闭的今天，可谓硕果仅存的动云盘服务提供商之一，是网络用户之间进行文件交换与共享以及个人文件云备份的重要工具之一。Google Drive仅为Windows与MAC系统提供了官方客户端，而在Linux系统下则需要选用第三方的同步工具。rclone作为一款优秀的开源同步工具，可以为Google Drive文件的同步提供良好支">
+<meta name="twitter:description" content="Google Drive作为Google旗下的云盘服务，在互联网云盘服务相继关闭的今天，可谓硕果仅存的云盘服务提供商之一，是网络用户之间进行文件交换与共享以及个人文件云备份的重要工具之一。Google Drive仅为Windows与MAC系统提供了官方客户端，而在Linux系统下则需要选用第三方的同步工具。rclone作为一款优秀的开源同步工具，可以为Google Drive文件的同步提供良好支持">
 
 
 
@@ -375,7 +375,7 @@
                 
               
 
-              <time title="Post created: 2019-05-08 20:43:51 / Updated at: 21:42:34" itemprop="dateCreated datePublished" datetime="2019-05-08T20:43:51+08:00">2019-05-08</time>
+              <time title="Post created: 2019-05-08 20:43:51 / Updated at: 21:49:33" itemprop="dateCreated datePublished" datetime="2019-05-08T20:43:51+08:00">2019-05-08</time>
             
 
             
@@ -432,7 +432,7 @@
       
 
       
-        <p><a href="https://drive.google.com" target="_blank" rel="external">Google Drive</a>作为<a href="https://google.com" target="_blank" rel="external">Google</a>旗下的云盘服务，在互联网云盘服务相继关闭的今天，可谓硕果仅存的动云盘服务提供商之一，是网络用户之间进行文件交换与共享以及个人文件云备份的重要工具之一。Google Drive仅为Windows与MAC系统提供了官方客户端，而在Linux系统下则需要选用第三方的同步工具。<a href="https://rclone.org" target="_blank" rel="external">rclone</a>作为一款优秀的开源同步工具，可以为Google Drive文件的同步提供良好支持。</p>
+        <p><a href="https://drive.google.com" target="_blank" rel="external">Google Drive</a>作为<a href="https://google.com" target="_blank" rel="external">Google</a>旗下的云盘服务，在互联网云盘服务相继关闭的今天，可谓硕果仅存的云盘服务提供商之一，是网络用户之间进行文件交换与共享以及个人文件云备份的重要工具之一。Google Drive仅为Windows与MAC系统提供了官方客户端，而在Linux系统下则需要选用第三方的同步工具。<a href="https://rclone.org" target="_blank" rel="external">rclone</a>作为一款优秀的开源同步工具，可以为Google Drive文件的同步提供良好支持。</p>
 <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>在<a href="https://www.debian.org/" target="_blank" rel="external">Debian</a>下可以使用具有超级牛力的APT工具进行安装</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt install rclone</div></pre></td></tr></table></figure>
 <h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>首次同步Google Drive时需要对<code>rclone</code>进行简单的配置。运行命令</p>
@@ -604,8 +604,6 @@
                 <div class="site-state-item site-state-categories">
                   <a href="/categories/index.html">
                     
-                    
-                      
                     
                       
                     
