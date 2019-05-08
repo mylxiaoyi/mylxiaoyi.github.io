@@ -96,20 +96,25 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="mylxiaoyi@notes">
-<meta property="og:url" content="http://mylxiaoyi.github.io/tags/霍达/index.html">
+  <meta name="description" content="Google Drive作为Google旗下的云盘服务，在互联网云盘服务相继关闭的今天，可谓硕果仅存的动云盘服务提供商之一，是网络用户之间进行文件交换与共享以及个人文件云备份的重要工具之一。Google Drive仅为Windows与MAC系统提供了官方客户端，而在Linux系统下则需要选用第三方的同步工具。rclone作为一款优秀的开源同步工具，可以为Google Drive文件的同步提供良好支">
+<meta name="keywords" content="debian,rclone,google drive">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Debian系统下使用rclone同步Google Drive文件">
+<meta property="og:url" content="http://mylxiaoyi.github.io/2019/05/08/sync-google-drive-with-rclone-under-debian/index.html">
 <meta property="og:site_name" content="mylxiaoyi@notes">
+<meta property="og:description" content="Google Drive作为Google旗下的云盘服务，在互联网云盘服务相继关闭的今天，可谓硕果仅存的动云盘服务提供商之一，是网络用户之间进行文件交换与共享以及个人文件云备份的重要工具之一。Google Drive仅为Windows与MAC系统提供了官方客户端，而在Linux系统下则需要选用第三方的同步工具。rclone作为一款优秀的开源同步工具，可以为Google Drive文件的同步提供良好支">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-08T13:42:34.626Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mylxiaoyi@notes">
+<meta name="twitter:title" content="在Debian系统下使用rclone同步Google Drive文件">
+<meta name="twitter:description" content="Google Drive作为Google旗下的云盘服务，在互联网云盘服务相继关闭的今天，可谓硕果仅存的动云盘服务提供商之一，是网络用户之间进行文件交换与共享以及个人文件云备份的重要工具之一。Google Drive仅为Windows与MAC系统提供了官方客户端，而在Linux系统下则需要选用第三方的同步工具。rclone作为一款优秀的开源同步工具，可以为Google Drive文件的同步提供良好支">
 
 
 
 
 
 
-  <link rel="canonical" href="http://mylxiaoyi.github.io/tags/霍达/"/>
+  <link rel="canonical" href="http://mylxiaoyi.github.io/2019/05/08/sync-google-drive-with-rclone-under-debian/"/>
 
 
 
@@ -119,7 +124,7 @@
   };
 </script>
 
-  <title>Tag: 霍达 | mylxiaoyi@notes</title>
+  <title>在Debian系统下使用rclone同步Google Drive文件 | mylxiaoyi@notes</title>
   
 
 
@@ -167,7 +172,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -222,7 +227,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -278,25 +283,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -330,58 +316,233 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>霍达<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mylxiaoyi.github.io/2019/05/08/sync-google-drive-with-rclone-under-debian/"/>
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mylxiaoyi"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.jpg"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mylxiaoyi@notes"/>
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2014/03/10/mu-si-lin-de-zang-li/" itemprop="url">
-            
-              <span itemprop="name">《穆斯林的葬礼》读后点滴</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">在Debian系统下使用rclone同步Google Drive文件
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2014-03-10T21:18:00+08:00"
-              content="2014-03-10">
-          03-10
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-05-08 20:43:51 / Updated at: 21:42:34" itemprop="dateCreated datePublished" datetime="2019-05-08T20:43:51+08:00">2019-05-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://drive.google.com" target="_blank" rel="external">Google Drive</a>作为<a href="https://google.com" target="_blank" rel="external">Google</a>旗下的云盘服务，在互联网云盘服务相继关闭的今天，可谓硕果仅存的动云盘服务提供商之一，是网络用户之间进行文件交换与共享以及个人文件云备份的重要工具之一。Google Drive仅为Windows与MAC系统提供了官方客户端，而在Linux系统下则需要选用第三方的同步工具。<a href="https://rclone.org" target="_blank" rel="external">rclone</a>作为一款优秀的开源同步工具，可以为Google Drive文件的同步提供良好支持。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>在<a href="https://www.debian.org/" target="_blank" rel="external">Debian</a>下可以使用具有超级牛力的APT工具进行安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt install rclone</div></pre></td></tr></table></figure>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>首次同步Google Drive时需要对<code>rclone</code>进行简单的配置。运行命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rclone config</div></pre></td></tr></table></figure>
+<p>后会得到如下的输出：</p>
+<blockquote>
+<p>2019/05/08 21:17:11 Config file “/home/mylxiaoyi/.rclone.conf” not found - using defaults<br>No remotes found - make a new one<br>n) New remote<br>s) Set configuration password<br>q) Quit config<br>n/s/q&gt; n<br>name&gt; google-drive<br>Type of storage to configure.<br>Choose a number from below, or type in your own value<br> 1 / Amazon Drive<br>   \ “amazon cloud drive”<br> 2 / Amazon S3 (also Dreamhost, Ceph, Minio)<br>   \ “s3”<br> 3 / Backblaze B2<br>   \ “b2”<br> 4 / Dropbox<br>   \ “dropbox”<br> 5 / Encrypt/Decrypt a remote<br>   \ “crypt”<br> 6 / Google Cloud Storage (this is not Google Drive)<br>   \ “google cloud storage”<br> 7 / Google Drive<br>   \ “drive”<br> 8 / Hubic<br>   \ “hubic”<br> 9 / Local Disk<br>   \ “local”<br>10 / Microsoft OneDrive<br>   \ “onedrive”<br>11 / Openstack Swift (Rackspace Cloud Files, Memset Memstore, OVH)<br>   \ “swift”<br>12 / Yandex Disk<br>   \ “yandex”<br>Storage&gt; 7<br>Google Application Client Id - leave blank normally.<br>client_id&gt;<br>Google Application Client Secret - leave blank normally.<br>client_secret&gt;<br>Remote config<br>Use auto config?</p>
+<ul>
+<li>Say Y if not sure</li>
+<li>Say N if you are working on a remote or headless machine or Y didn’t work<br>y) Yes<br>n) No<br>y/n&gt; </li>
+</ul>
+</blockquote>
+<p>在配置步骤的最后，如果我们的网络可以直接连接墙外，则可以选择<code>y) Yes</code>，<code>rclone</code>会自动打开一个浏览器窗口，在浏览器窗口中完成访问授权并获得Token；如果很不幸，你的网强同我一样不能直接连接墙外，则需要选择<code>n) No</code>，按照<code>rclone</code>的提示访问指定链接完成访问授权，将授权码告知<code>rclone</code>。</p>
+<blockquote>
+<p>If your browser doesn’t open automatically go to the following link: <a href="https://accounts.google.com/o/oauth2/auth?client_id=202264815644.apps.googleusercontent.com&amp;redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&amp;response_type=code&amp;scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive&amp;state=c0c50b84e9ecb4e92d6bf8b46abbd4c7" target="_blank" rel="external">https://accounts.google.com/o/oauth2/auth?client_id=202264815644.apps.googleusercontent.com&amp;redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&amp;response_type=code&amp;scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive&amp;state=c0c50b84e9ecb4e92d6bf8b46abbd4c7</a><br>Log in and authorize rclone for access<br>Enter verification code&gt; </p>
+</blockquote>
+<p>这样就可以完成<code>rclone</code>的配置了。</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>完成配置以后，就可以通过<code>rclone</code>来管理同步远端Google Drive上的文件了。</p>
+<p>当运行命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rclone</div></pre></td></tr></table></figure>
+<p>就可以看到<code>rclone</code>的使用方法了。</p>
+<p>例如，可以查看远端云盘中的文件夹</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rclone lsd google-drive:</div></pre></td></tr></table></figure>
+<p>查看远端云盘中的文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rclone ls google-drive:</div></pre></td></tr></table></figure>
+<p>将远端云盘中的文件夹同步到本地</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rclone sync google-drive:remote-dir <span class="built_in">local</span>-dir</div></pre></td></tr></table></figure>
+<p>更为具体的使用方法可以参考<code>rclone</code>帮助或<a href="https://rclone.org/drive/" target="_blank" rel="external">官方文档</a>。</p>
+<p>That’s all~~ Enjoy it~~</p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+  <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="mylxiaoyi wechat" style="width: 200px; max-width: 100%;"/>
+  <div>扫我看看吧～～</div>
+</div>
+
+      </div>
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/debian/" rel="tag"># debian</a>
+          
+            <a href="/tags/rclone/" rel="tag"># rclone</a>
+          
+            <a href="/tags/google-drive/" rel="tag"># google drive</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/03/story-with-chouchou-12/" rel="next" title="臭臭讲故事之白萝卜做陷阱">
+                <i class="fa fa-chevron-left"></i> 臭臭讲故事之白萝卜做陷阱
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -402,8 +563,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -599,6 +769,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -726,6 +913,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
 
   
 
@@ -736,6 +927,8 @@
 
   
 
+
+  
 
 
   
