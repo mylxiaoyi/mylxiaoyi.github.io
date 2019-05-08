@@ -8,7 +8,7 @@ categories:
 - Linux
 ---
 
-[Google Drive](https://drive.google.com)作为[Google](https://google.com)旗下的云盘服务，在互联网云盘服务相继关闭的今天，可谓硕果仅存的动云盘服务提供商之一，是网络用户之间进行文件交换与共享以及个人文件云备份的重要工具之一。Google Drive仅为Windows与MAC系统提供了官方客户端，而在Linux系统下则需要选用第三方的同步工具。[rclone](https://rclone.org)作为一款优秀的开源同步工具，可以为Google Drive文件的同步提供良好支持。
+[Google Drive](https://drive.google.com)作为[Google](https://google.com)旗下的云盘服务，在互联网云盘服务相继关闭的今天，可谓硕果仅存的云盘服务提供商之一，是网络用户之间进行文件交换与共享以及个人文件云备份的重要工具之一。Google Drive仅为Windows与MAC系统提供了官方客户端，而在Linux系统下则需要选用第三方的同步工具。[rclone](https://rclone.org)作为一款优秀的开源同步工具，可以为Google Drive文件的同步提供良好支持。
 
 # 安装
 
