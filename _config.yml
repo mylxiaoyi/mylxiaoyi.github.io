@@ -71,7 +71,7 @@ theme: next
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/mylxiaoyi/mylxiaoyi.github.io
+  repo: git@github.com:mylxiaoyi/mylxiaoyi.github.io.git
 
 # duoshuo
 #duoshuo_shortname: hexo-github
