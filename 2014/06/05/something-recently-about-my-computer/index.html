@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"mylxiaoyi.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="我现在所用的新笔记本是去年10月份购入的Aspire V3-571G，i5-3230M双核处理器、GT730M独立显示、4G独立显存、1920x1080分辨率的IPS全高清屏，最重要的是5038的价格，正如网上大家的评价，这是一款性价比相当不错的笔记本。而我也希望能够在工作中充分发挥其性能，因而在来西安出差之前，特意更换了一块1T的硬盘，并加装了一条4G内存，从而使得内存容量达到8G。本希望他能够">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不作不死－最近的电脑折腾">
+<meta property="og:url" content="http://mylxiaoyi.github.io/2014/06/05/something-recently-about-my-computer/index.html">
+<meta property="og:site_name" content="mylxiaoyi@notes">
+<meta property="og:description" content="我现在所用的新笔记本是去年10月份购入的Aspire V3-571G，i5-3230M双核处理器、GT730M独立显示、4G独立显存、1920x1080分辨率的IPS全高清屏，最重要的是5038的价格，正如网上大家的评价，这是一款性价比相当不错的笔记本。而我也希望能够在工作中充分发挥其性能，因而在来西安出差之前，特意更换了一块1T的硬盘，并加装了一条4G内存，从而使得内存容量达到8G。本希望他能够">
+<meta property="og:locale">
+<meta property="article:published_time" content="2014-06-05T15:35:00.000Z">
+<meta property="article:modified_time" content="2023-07-02T06:11:09.192Z">
+<meta property="article:author" content="mylxiaoyi">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="nvidia">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://mylxiaoyi.github.io/2014/06/05/something-recently-about-my-computer/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>不作不死－最近的电脑折腾 | mylxiaoyi@notes</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">mylxiaoyi@notes</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://mylxiaoyi.github.io/2014/06/05/something-recently-about-my-computer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="mylxiaoyi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mylxiaoyi@notes">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          不作不死－最近的电脑折腾
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2014-06-05 23:35:00" itemprop="dateCreated datePublished" datetime="2014-06-05T23:35:00+08:00">2014-06-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-07-02 14:11:09" itemprop="dateModified" datetime="2023-07-02T14:11:09+08:00">2023-07-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>我现在所用的新笔记本是去年10月份购入的Aspire V3-571G，i5-3230M双核处理器、GT<br>730M独立显示、4G独立显存、1920x1080分辨率的IPS全高清屏，最重要的是5038的价格，正如网上大家的评价，这是一款性价比相当不错的笔记本。而我也希望能够在工作中充分发挥其性能，因而在来西安出差之前，特意更换了一块1T的硬盘，并加装了一条4G内存，从而使得内存容量达到8G。本希望他能够充分发挥其性能优势，然而在最近一段时间却给我带来不少的烦恼，而烦恼的根源就是GT730M独立显卡。</p>
+<p>问题的起源是这样的：现在出差所在的单位，所有的开发工作都是在<a target="_blank" rel="noopener" href="http://www.linux.org/">Linux</a>平台下完成的，由于受困于项目所需要的处理速度，理所当然的，我们希望能够使用<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-zone">CUDA</a>来加速我们项目的处理能力。然而由于我的笔记本是<a target="_blank" rel="noopener" href="http://www.intel.com/">Intel</a>与<a target="_blank" rel="noopener" href="http://www.nvidia.com/">Nvidia</a>双显卡，且由于Nvidia的Optimus技术，使得在Linux系统上安装Nvidia驱动并安装CUDA开发包变得困难起来。好在开源社区推出了Bumblebee解决方案，可以在Linux系统上实现Nvidia的3D硬件加速，从而使得在Linux系统下使用CUDA进行开发成为可能。然而悲催的是，不论我是使用源里的Nvidia驱动，还是在Nvidia官网下载的驱动，虽然都可以正常的安装，但却无法使用，更不要说CUDA开发了。在网上搜索了半天，原来遇到同样问题的人还不在少数，而问题的根源就在于Nvidia的Optimus技术，而解决方案就是<a target="_blank" rel="noopener" href="http://bumblebee-project.org/">Bumblebee</a>。但是无论我怎样尝试，都没有办法在我的Debian上正常运行。难道我们的开发终归要回到Windows平台吗？</p>
+<p>另一个促使我折腾的原因则是这样的：在我们的项目中使用<a target="_blank" rel="noopener" href="http://www.opencv.org/">OpenCV</a>，在我第一次安装上<a target="_blank" rel="noopener" href="http://www.debian.org/">Debian</a>系统，我是使用源里的OpenCV来进行安装的，然而由于Debian的自由策略，是不提供nonfree的安装模块的，而nonfree模块也正是我们所需要的，这样一来，我们只能自己来编译安装OpenCV了。然而在使用<a target="_blank" rel="noopener" href="http://www.cmake.org/">CMake</a>进行配置时却有一大堆的依赖关系需要解决，这时的我只能在源中一个个查找然后安装了。这时的我真是有些怀念<a target="_blank" rel="noopener" href="http://www.gentoo.org/">Gentoo</a>的编译安装啊。巧的是，布老师给我了一份CUDA SURF的代码让来看一下，而在这份代码的README中就说明，这份代码仅在Gentoo的CUDA环境下进行过测试。这就让我那颗的心蠢蠢欲动了。</p>
+<p>最后一根压倒骆驼的稻草则是这样的：不知道是我Debian系统更新的原因，还是我OpenCV编译的原因，我们项目中的一个测试例子在显示两幅keypoints图片后，在两张图片之间切换时就会产生程序死掉样子的空白。再加上我再次尝试编译OpenCV时，以前能够成功编译的代码和配置在这次编译时却一直报错，在网上搜索了一下发现，似乎是由于FFMPEG的版本较新的原因。没有办法，自己重新由源码编译安装了FFMPEG，并修改了OpenCV的部分代码，才最终编译成功。而这更使我下定决定回归Gentoo的编译安装。</p>
+<p>当时在我的1T硬盘上，系统分区则安装的情况是这样的：最前面是100M的系统保留分区，然后是400G的Debian分区，接下为200G左右的Windows分区，最后是一个逻辑分区。由于前面的想法，我就想在400G的Debian分区上划分200G出安装Gentoo，之前有过在Windows上使用分区软件划分分区的经验，通过使用PartitionMagic之类的软件，就可以对分区进行调整而不会破坏分区上的数据。然而这一次，无论我怎么尝试，都不能对Debian分区进行调整。无奈之后，只能重新分区重新安装系统了。于是将400G的Debia分区与前面的100M系统保留区分合并，重新划分为两个分区，一个用来安装Debian，而另一个用来安装Gentoo。两个系统安装完成后进行了简单的配置，于是重启，结果发现我的Win7系统进不去了，错误提示BOOTMSG丢失，这时才意识到我将100M的系统保留分区删除的严重后果。</p>
+<p>为了恢复Win7系统的启动分区真是花费了很大的努力，各种修复方法都进行了尝试，然而无一例外的，所得到的都是令人失望的结果。终于在折腾在半夜后决定使用我的终极大法，重装Windows。</p>
+<p>采用重装的方法，那一切就变得简单起来了，只需按照顺序重新安装，下载软件，配置等进行下来就可以了。这时所需要做的就是耐心的等待和地糟糕网速的容忍。不过好在这一切之后，一切又都恢复正常了。</p>
+<p>这就是我最近很二的折腾电脑的经历。真是应了那句话no zuo no die啊！！！</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/nvidia/" rel="tag"># nvidia</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2014/04/25/first-time-to-sbt/" rel="prev" title="初识sbt">
+      <i class="fa fa-chevron-left"></i> 初识sbt
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2014/06/19/install-bumblebee-on-gentoo/" rel="next" title="不作不死－Gentoo折腾记">
+      不作不死－Gentoo折腾记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">mylxiaoyi</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/mylxiaoyi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;mylxiaoyi" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/2350724865" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;2350724865" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/mylxiaoyi" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;mylxiaoyi" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mylxiaoyi</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"mylxiaoyi.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="我的Gateway T6819c是2007年10月1日购买的（之所以日期记得这样清楚是因为第二年的10月1日我在北京花了1050的价格购买了美利达入门级山地车勇士，这在当时是一件十分疯狂的举动），作为Gateway入华来的第二款笔记本，搭配了Intel酷睿双核T5250，不过主频低了些，只有1.50GHz，1G内存，120G硬盘。可以说这是当时笔记本的标准配置，比起现在2G内存，500G硬盘的标配">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用SSD升级笔记本">
+<meta property="og:url" content="http://mylxiaoyi.github.io/2014/04/12/upgrade-old-computer-with-ssd/index.html">
+<meta property="og:site_name" content="mylxiaoyi@notes">
+<meta property="og:description" content="我的Gateway T6819c是2007年10月1日购买的（之所以日期记得这样清楚是因为第二年的10月1日我在北京花了1050的价格购买了美利达入门级山地车勇士，这在当时是一件十分疯狂的举动），作为Gateway入华来的第二款笔记本，搭配了Intel酷睿双核T5250，不过主频低了些，只有1.50GHz，1G内存，120G硬盘。可以说这是当时笔记本的标准配置，比起现在2G内存，500G硬盘的标配">
+<meta property="og:locale">
+<meta property="og:image" content="http://mylxiaoyi.github.io/images/SSD_IDE.jpg">
+<meta property="og:image" content="http://mylxiaoyi.github.io/images/SSD_SATA.jpg">
+<meta property="article:published_time" content="2014-04-12T14:28:00.000Z">
+<meta property="article:modified_time" content="2023-07-02T06:11:09.192Z">
+<meta property="article:author" content="mylxiaoyi">
+<meta property="article:tag" content="SSD">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://mylxiaoyi.github.io/images/SSD_IDE.jpg">
+
+<link rel="canonical" href="http://mylxiaoyi.github.io/2014/04/12/upgrade-old-computer-with-ssd/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>使用SSD升级笔记本 | mylxiaoyi@notes</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">mylxiaoyi@notes</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://mylxiaoyi.github.io/2014/04/12/upgrade-old-computer-with-ssd/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="mylxiaoyi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mylxiaoyi@notes">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用SSD升级笔记本
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2014-04-12 22:28:00" itemprop="dateCreated datePublished" datetime="2014-04-12T22:28:00+08:00">2014-04-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-07-02 14:11:09" itemprop="dateModified" datetime="2023-07-02T14:11:09+08:00">2023-07-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>我的Gateway T6819c是2007年10月1日购买的（之所以日期记得这样清楚是因为第二年的10月1日我在北京花了1050的价格购买了美利达入门级山地车勇士，这在当时是一件十分疯狂的举动），作为Gateway入华来的第二款笔记本，搭配了Intel酷睿双核T5250，不过主频低了些，只有1.50GHz，1G内存，120G硬盘。可以说这是当时笔记本的标准配置，比起现在2G内存，500G硬盘的标配来说真是寒碜得多。随着时间的推移与软件技术的进步，软件运行所需要的硬件资源越来越多，我的T6819c越来越难以应对越来越苛刻的硬件需求，而在安装了Win7以后更是步履维艰，更加雪上加霜的是学校使用华为iNode客户进行认证上网，iNode的网络监控所耗费的硬件资源更为压垮我的最后一根稻草。无奈囊中羞涩，实现不了换新本的美梦，那就只能寻求升级的途径了。</p>
+<p>最早听说SSD还是2011年在办公室里看《电脑报》时了解到的呢。不过当时的SSD真是贵得离谱，加之尚且能够忍受当时的电脑速度，因而没有动过任何心思。而随着硬件技术的进步，SSD越来越进入大众的视野，不再成为可遇而不可求的神器。当然最为重要的是在<a target="_blank" rel="noopener" href="http://jd.com/">京东</a>搞活动时以699元的价格入手了一块金泰克SSD。既然要升级，那就顺便也升级一下内存吧，于是在<a target="_blank" rel="noopener" href="http://taobao.com/">淘宝</a>上购得了一条2G的三星DDR2 800的内存。等一切齐备后就开始了我的笔记本升级之旅。</p>
+<p>内存的升级比较简单，卸下电池，打开电脑后盖，很轻松地就搞定了内存升级。而我的SSD升级真可谓是一波三折啊。</p>
+<p>在升级开始之前，特意在网上<a target="_blank" rel="noopener" href="https://google.com.hk/">Google</a>了一下SSD升级攻略。看网上的教程觉得很简单，只需要将SSD安装在光驱位即可。如何将SSD安装在光驱位，一开始以为是使用光驱架来固定SSD硬盘呢。待我辛辛苦苦当光驱拆下来一看却傻了眼，因为第一我根本就卸不来光驱架，第二光驱是IDE接口，而我的SSD是SATA接口。</p>
+<p>再仔细地看了一下网上的教程，原来将SSD安装在光驱位是通过一个所谓的光驱位硬盘架来实现的，于是马上淘宝搜索购买（在这里要提醒朋友们注意你需要的IDE接口还是SATA接口），几天后收到宝贝后继续升级之旅。</p>
+<p>有了光驱位硬盘架，接下的工作就要简单得多了。将SSD固定在硬盘架上，然后将硬盘架插入光驱位，虽然过程有些波折，但总的说来还算顺利。一切搞定，下面就是安装系统了。</p>
+<p>关于系统的安装，最初的想法是将原来硬盘的Windows直接拷贝过来，不过试了网上的方法后无一成功，没有办法，只能再重新安装了。安装过程一切顺利，但进入系统后却傻了眼，装在SSD上的Windows真是慢得要死啊！说好的程序秒开呢，我怎么没有体验到。勉强使用鲁大师跑个分，晕啊，跑分的结果显示，SSD的性能还不如我之前的机械式硬盘呢。</p>
+<p><img src="/images/SSD_IDE.jpg" alt="SSD接在IDE接口"></p>
+<p>看到这样的跑分结果真是郁闷得不行。如果是这样的速度我还不如用这个价钱来买一个大容量的机械式硬盘呢。不过突然间想到，这是不是因为我将SSD接在IDE接口上的原因呢？</p>
+<p>于是再将我的机械式硬盘卸下来，拆下硬盘架，将SSD固定在硬盘架上，然后插在硬盘位的SATA接口上，将机械式硬盘固定在光驱位硬盘架上，插在IDE接口上。重启后进入Win7系统，这回的感觉立马就爽得多了。再用鲁大师跑个分先：</p>
+<p><img src="/images/SSD_SATA.jpg" alt="SSD接在SATA接口"></p>
+<p>原来之前的性能低下是因为转接在IDE接口上的原因啊。看来SSD还是要接在SATA接口上啊。想来也是，只有SATA对SATA，这些比特数据才能畅通无阻不减速啊。</p>
+<p>以上就是我使用SSD升级笔记本的经历。真是纸上得来终觉浅，决知比事要躬行啊。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/SSD/" rel="tag"># SSD</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2014/04/10/care-yourself-for-your-lovers/" rel="prev" title="为了你爱的人，请小心的活着">
+      <i class="fa fa-chevron-left"></i> 为了你爱的人，请小心的活着
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2014/04/25/first-time-to-sbt/" rel="next" title="初识sbt">
+      初识sbt <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">mylxiaoyi</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/mylxiaoyi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;mylxiaoyi" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/2350724865" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;2350724865" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/mylxiaoyi" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;mylxiaoyi" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mylxiaoyi</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

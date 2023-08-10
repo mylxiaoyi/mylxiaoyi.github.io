@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"mylxiaoyi.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="最近在Cousera上开始了一门介绍使用Scala进行函数式编程的公开课Functional Programming Principles in Scala，该课程使用基于Eclipse的ScalaIDE作为开发工具，使用SBT作为构建工具，从而第一次知道了SBT这个构建工具。 关于课程所用开发工具及环境的搭建，在课程视频有详细的介绍，而且在Tools Setup还有相应的说明，而关于SBT的初步">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识sbt">
+<meta property="og:url" content="http://mylxiaoyi.github.io/2014/04/25/first-time-to-sbt/index.html">
+<meta property="og:site_name" content="mylxiaoyi@notes">
+<meta property="og:description" content="最近在Cousera上开始了一门介绍使用Scala进行函数式编程的公开课Functional Programming Principles in Scala，该课程使用基于Eclipse的ScalaIDE作为开发工具，使用SBT作为构建工具，从而第一次知道了SBT这个构建工具。 关于课程所用开发工具及环境的搭建，在课程视频有详细的介绍，而且在Tools Setup还有相应的说明，而关于SBT的初步">
+<meta property="og:locale">
+<meta property="article:published_time" content="2014-04-25T11:37:28.000Z">
+<meta property="article:modified_time" content="2023-07-02T06:11:09.192Z">
+<meta property="article:author" content="mylxiaoyi">
+<meta property="article:tag" content="scala">
+<meta property="article:tag" content="sbt">
+<meta property="article:tag" content="coursera">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://mylxiaoyi.github.io/2014/04/25/first-time-to-sbt/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>初识sbt | mylxiaoyi@notes</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">mylxiaoyi@notes</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://mylxiaoyi.github.io/2014/04/25/first-time-to-sbt/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="mylxiaoyi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mylxiaoyi@notes">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          初识sbt
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2014-04-25 19:37:28" itemprop="dateCreated datePublished" datetime="2014-04-25T19:37:28+08:00">2014-04-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-07-02 14:11:09" itemprop="dateModified" datetime="2023-07-02T14:11:09+08:00">2023-07-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/scala/" itemprop="url" rel="index"><span itemprop="name">scala</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>最近在<a target="_blank" rel="noopener" href="https://coursera.org/">Cousera</a>上开始了一门介绍使用<a target="_blank" rel="noopener" href="http://www.scala-lang.org/">Scala</a>进行函数式编程的公开课<a target="_blank" rel="noopener" href="https://class.coursera.org/progfun-004">Functional Programming Principles in Scala</a>，该课程使用基于<a target="_blank" rel="noopener" href="http://www.eclipse.org/">Eclipse</a>的<a target="_blank" rel="noopener" href="http://scala-ide.org/">ScalaIDE</a>作为开发工具，使用<a target="_blank" rel="noopener" href="http://http//www.scala-sbt.org">SBT</a>作为构建工具，从而第一次知道了SBT这个构建工具。</p>
+<p>关于课程所用开发工具及环境的搭建，在<a target="_blank" rel="noopener" href="https://class.coursera.org/progfun-004/lecture">课程视频</a>有详细的介绍，而且在<a target="_blank" rel="noopener" href="https://class.coursera.org/progfun-004/wiki/ToolsSetup">Tools Setup</a>还有相应的说明，而关于SBT的初步使用在<a target="_blank" rel="noopener" href="https://class.coursera.org/progfun-004/wiki/SbtTutorial">Sbt Tutorial</a>部分也有相应的介绍，通过阅读这些说明，我们就可以初步了解Sbt的使用，以满足该课程的需要。当然，如果我们感兴趣或是有需要，我们可以网络上找到大量的相关文档，当然<a target="_blank" rel="noopener" href="http://www.scala-sbt.org/0.12.2/docs/index.html">官网的文档</a>是我们一定要找机会细读的，另外在<a target="_blank" rel="noopener" href="https://github.com/">Github</a>上还有一份相当不错的<a target="_blank" rel="noopener" href="http://twitter.github.io/scala_school/zh_cn/sbt.html">关于Sbt的介绍</a>。</p>
+<p>然而在实际使用时，我们就会发现，Sbt的自动化库管理工具需要连接网络下载相关的依赖包，而且似乎是每执行一个任务就要连网下载，完全没有理会已下载的JAR包（很有可能是我没有正确的理解Sbt才会有这样的认识），对于我们这样糟糕的网络环境来说，这绝对是一个极大的挑战，即使是在早上人少网络环境相发不错的时候连网下载也不见得会成功，这对于刚刚燃起学习兴趣的我来说是一个极大的打击。</p>
+<p>不过好在这个问题并不是不能解决的。在<a target="_blank" rel="noopener" href="https://google.com.hk/">Google</a>上搜索一下，我们就可以找到大量的关于Sbt库依赖管理的内容，当然在Sbt官网文档的<a target="_blank" rel="noopener" href="http://www.scala-sbt.org/0.12.2/docs/Getting-Started/Library-Dependencies.html">库管理部分</a>就已经介绍了Sbt的依赖库管理方法。原来在Sbt中，我们可以使用自动与手动两种方式来管理Sbt工程的依赖库，即Managed Dependencies与Unmanaged dependencies，当使用自动方式时，在工程目录下的<code>build.sbt</code>文件指定所依赖的库：</p>
+<pre><code>libraryDependencies += &quot;org.scalatest&quot; %% &quot;scalatest&quot; % &quot;1.9.1&quot; % &quot;test&quot;
+
+libraryDependencies += &quot;junit&quot; % &quot;junit&quot; % &quot;4.10&quot; % &quot;test&quot;
+</code></pre>
+<p>上面的两行代码就指定了<code>scalatest-1.9.1</code>与<code>junit-4.10</code>两个依赖库。然而也就因为这两个依赖库，在执行Sbt任务时就会长时间卡在依赖库下载这一步。</p>
+<p>幸好我们还可以选择使用手动管理依赖库。当使用手动管理依赖库时，我们只需要将所依赖的库放在工程目录下的<code>lib</code>目录中，当启动Sbt时，Sbt会自动将<code>lib</code>目录下的库文件添加到<code>classpath</code>中。但时在这里我们需要注意的一点就是，当选择使用手动管理方式时，我们需要将<code>build.sbt</code>文件中的上述两行代码注释掉，否则依然还是使用自动管理方式，依然会连网下载。</p>
+<pre><code>//libraryDependencies += &quot;org.scalatest&quot; %% &quot;scalatest&quot; % &quot;1.9.1&quot; % &quot;test&quot;
+
+//libraryDependencies += &quot;junit&quot; % &quot;junit&quot; % &quot;4.10&quot; % &quot;test&quot;
+</code></pre>
+<p>这就是我在初次使用Sbt时遇到的问题，记录在这里，希望会对遇到类似情况的朋友有用。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/scala/" rel="tag"># scala</a>
+              <a href="/tags/sbt/" rel="tag"># sbt</a>
+              <a href="/tags/coursera/" rel="tag"># coursera</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2014/04/12/upgrade-old-computer-with-ssd/" rel="prev" title="使用SSD升级笔记本">
+      <i class="fa fa-chevron-left"></i> 使用SSD升级笔记本
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2014/06/05/something-recently-about-my-computer/" rel="next" title="不作不死－最近的电脑折腾">
+      不作不死－最近的电脑折腾 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">mylxiaoyi</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/mylxiaoyi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;mylxiaoyi" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/2350724865" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;2350724865" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/mylxiaoyi" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;mylxiaoyi" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mylxiaoyi</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

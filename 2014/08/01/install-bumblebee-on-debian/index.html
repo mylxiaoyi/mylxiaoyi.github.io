@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"mylxiaoyi.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="时间飞逝，转眼之间距离上一篇《不作不死-Gentoo折腾记》已经过去近两个月的时间了。事实上，Debian的折腾与前面Windows和Gentoo的折腾是同时的，然而由于各种原因一直没有记录，今天在这里记录一下。 我个人的Debian使用历史还要从大学时代说起。那个时候刚刚买了电脑，由于个人的兴趣也开始尝试折腾各种Linux发行版，可以说那个时候每天的主要折腾内容就是重装Linux。当时学校里论坛">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不作不死－Debian折腾记">
+<meta property="og:url" content="http://mylxiaoyi.github.io/2014/08/01/install-bumblebee-on-debian/index.html">
+<meta property="og:site_name" content="mylxiaoyi@notes">
+<meta property="og:description" content="时间飞逝，转眼之间距离上一篇《不作不死-Gentoo折腾记》已经过去近两个月的时间了。事实上，Debian的折腾与前面Windows和Gentoo的折腾是同时的，然而由于各种原因一直没有记录，今天在这里记录一下。 我个人的Debian使用历史还要从大学时代说起。那个时候刚刚买了电脑，由于个人的兴趣也开始尝试折腾各种Linux发行版，可以说那个时候每天的主要折腾内容就是重装Linux。当时学校里论坛">
+<meta property="og:locale">
+<meta property="article:published_time" content="2014-08-01T14:17:00.000Z">
+<meta property="article:modified_time" content="2023-07-02T06:11:09.192Z">
+<meta property="article:author" content="mylxiaoyi">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://mylxiaoyi.github.io/2014/08/01/install-bumblebee-on-debian/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>不作不死－Debian折腾记 | mylxiaoyi@notes</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">mylxiaoyi@notes</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://mylxiaoyi.github.io/2014/08/01/install-bumblebee-on-debian/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="mylxiaoyi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mylxiaoyi@notes">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          不作不死－Debian折腾记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2014-08-01 22:17:00" itemprop="dateCreated datePublished" datetime="2014-08-01T22:17:00+08:00">2014-08-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-07-02 14:11:09" itemprop="dateModified" datetime="2023-07-02T14:11:09+08:00">2023-07-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>时间飞逝，转眼之间距离上一篇《不作不死-Gentoo折腾记》已经过去近两个月的时间了。事实上，Debian的折腾与前面Windows和Gentoo的折腾是同时的，然而由于各种原因一直没有记录，今天在这里记录一下。</p>
+<p>我个人的Debian使用历史还要从大学时代说起。那个时候刚刚买了电脑，由于个人的兴趣也开始尝试折腾各种Linux发行版，可以说那个时候每天的主要折腾内容就是重装Linux。当时学校里论坛里有一个大牛，他极为推崇Debian，并且据他说，自从他用了Debian以后就再也没有换过其他的Linux发行版本。于是在大牛的指引，我也开始了Debian的尝试，当然也正始他所说，我使用了Debian以后也不再想换用其他的Linux发行版本了。丰富的软件源，超级牛力的apt-get，这就是Debianer深爱的原因。正如网友所说，使用Debian就像开了一家超市，无论缺什么，只需要apt-get就可以了。当然，Debian为了追求系统的稳定性，软件的陈旧一直为大家所诟病，而随着基于Debian的Ubuntu的兴起，Debian也加快了开发的节奏。当然，对于个人用户来说，使用testing源，或者sid源或是experimental源，软件包的版本还是相当新，而软件包的稳定性也并不如听起来的那样恐怖。</p>
+<p>好了，说了这么多无非是想要表达一下个人对于Debian的喜爱。在前面的文章中我们提到过，折腾Debian的原因就是为了能够使用CUDA进行GPU加速以及编译OpenCV。然而不幸的是，由于Nvidia对于Linux的支持问题，Nvidia所提出的Optimus技术是我们在Linux下使用CUDA的主要障碍。如果我们的笔记本支持在Bios里关掉集成显卡从而仅使用独立的Nvidia显卡，那是最好不过的了。但是在很多时候，我们所选购的笔记本提供商并不会在Bios里提供这样的功能，那么我们就需要转求其他的解决方案了。</p>
+<p>幸运的是，伟大的开源运动为我们提供了Bumblebee解决方案，我们可以在其项目主页上看到相应的特性介绍以及安装方法。对于Bubmlebee在Debian下的安装，Debian Wiki介绍了相应的安装方法，这是我们首先要参考的文档。概括起来，Debian Wiki所提到的方法主要分为下面几步：</p>
+<ul>
+<li>安装Nvidia驱动</li>
+</ul>
+<p>关于Nvidia驱动的安装，我们可以在Nvidia的官网下载对应的驱动。当然，在Debian的安装源中也有相应的Nvidia驱动，我们也可以选择通过apt-get来进行安装。</p>
+<p>我们可以使用下面的命令来搜索一下Debian源中的Nvidia驱动：</p>
+<pre><code>apt-cache search nvidia
+</code></pre>
+<p>这样我们会看到多个Nvidia驱动可以选择，我们可以选择其中一个进行安装：</p>
+<pre><code>apt-get install nvidia-driver
+</code></pre>
+<p><code>apt-get</code>会自动为我们解决相关的依赖关系。</p>
+<ul>
+<li>安装Bumblebee</li>
+</ul>
+<p>同样我们也可以先来查看一下源中Bumblebee中的软件包情况：</p>
+<pre><code>apt-cache search bumblebee
+</code></pre>
+<p>然后通过<code>apt-get</code>进行安装：</p>
+<pre><code>apt-get install bumblebee bumblebee-nvidia
+</code></pre>
+<p>Bumblebee提供了optirun程序，我们可以通过该实用程序将相应的计算任务提交给GPU完成。例如，我们可以能过下面的命令将firefox程序放在GPU上运行：</p>
+<pre><code>optirun firefox
+</code></pre>
+<p>如果一切顺利我们会看到firefox正常启动运行。然而一切顺利终归是最为理想的情况，实际的情况并非总是如此，我们也许会遇到<code>无法访问nvidia驱动</code>这样的错误，解决方法是编辑<code>/etc/bumblebee/bumblebee.conf</code>，将<code>KernelDriver=nvidia</code>改为<code>KernelDriver=nvidia-current</code>，保存后重启<code>bumblebeed</code>守护进程：</p>
+<pre><code>/etc/init.d/bumblebeed restart
+</code></pre>
+<p>这样以后我们应该就可以顺利启动firefox了，当然，很有可能我们需要多次运行该命令才会启动成功。</p>
+<p>好了，关于Debian Wiki上所介绍的关于Bumblebee的安装大致就是如此了，但是实际中我们会发现，仅是这样的安装步骤是不足够的。</p>
+<p>要测试Nvidia驱动以及Bumblbee是否安装成功并正常工作，我们可以使用一个简单的测试程序，即<code>mesa-utils</code>所提供的<code>glxgears</code>。首先我们运行一下<code>glxgears</code>来看一下集成显卡的渲染速度：</p>
+<pre><code>glxgears
+</code></pre>
+<p>在我的机器上大致会达到60FPS这样的速度。</p>
+<p>下面我们来测试一下在GPU上的渲染速度：</p>
+<pre><code>optirun glxgears
+</code></pre>
+<p>很奇怪的结果不是吗？GPU的渲染速度和集成显卡的渲染速度居然是一样的？如果仅是这样的渲染速度，我们还折腾CUDA运算干什么呢？为什么会出现这样的结果呢？</p>
+<p>一切的原因就在于Debian Wiki介绍中少了一步，那就是安装<code>virtualgl</code>。关于<code>virtualgl</code>，我们可以在其项目主页上看到相应的介绍，简单来说，<code>virtualgl</code>所要实现的就是将渲染操作放在GPU上运行，而将渲染结果显示放在集成显卡上运行。这样看来<code>virtualgl</code>正是Bumblebee所需要的。</p>
+<p>我们可以在<code>virtualgl</code>的项目主页上循着相应的链接下载安装<code>virtualgl</code>，安装后我们再运行下面的命令：</p>
+<pre><code>optirun glxgears
+</code></pre>
+<p>我们就会惊喜地看到，GPU的渲染速度可以惊艳地达到1800FPS，这才是GPU运行应有的水准嘛。</p>
+<p>好了，我们的安装步骤已经接近尾声了，但是我们注意到，上面一系列的命令操作都是以<code>root</code>用户进行的，而当我们普通用户运行上面的命令时却告诉权限不足，并提示我们将用户加入<code>bumblebee</code>组，我们可以通过下面的命令来添加：</p>
+<pre><code>gpasswd -a user bumblebee
+</code></pre>
+<p>注销后再重新登陆，我们就可以顺利运行<code>optirun</code>命令了。</p>
+<p>搞了Nvidia驱动与Bumblebee，安装CUDA开发包就是很简单的事情了。首先我们可以看一下源中所提供的cuda开发包：</p>
+<pre><code>apt-cache search cuda
+</code></pre>
+<p>然后安装相应的软件包：</p>
+<pre><code>apt-get install nvidia-cuda-dev nvidia-cuda-toolkit
+</code></pre>
+<p><code>apt-get</code>会自动为解决依赖关系并安装相应的依赖包。</p>
+<p>以上就是我在Debian上折腾CUDA的经历，准备好了CUDA开发环境，下面我们就可以学习CUDA开发了。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2014/06/19/install-bumblebee-on-gentoo/" rel="prev" title="不作不死－Gentoo折腾记">
+      <i class="fa fa-chevron-left"></i> 不作不死－Gentoo折腾记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2015/11/22/interactive-clang-format-generator/" rel="next" title="交互式clang-format生成器">
+      交互式clang-format生成器 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">mylxiaoyi</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/mylxiaoyi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;mylxiaoyi" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/2350724865" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;2350724865" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/mylxiaoyi" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;mylxiaoyi" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mylxiaoyi</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

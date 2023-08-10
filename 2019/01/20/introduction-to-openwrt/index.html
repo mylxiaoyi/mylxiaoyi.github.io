@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"mylxiaoyi.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="OpenWrt作为一款优秀的开源路由系统，在为路由玩家提供多种新奇玩法的同时，也为借助智能路由器创业的年轻人提供了新的机遇。如果不想直接使用各种所谓的智能路由器，大可以自己购买支持刷机OpenWrt的路由器，自己动手折腾来打造一款满足自身需求的智能路由器。 本人并不是一名路由器玩家，确切地说，自己还只是一个路由器小白，仅是为了替换掉自己的TP-Link，同时尝鲜一下OpenWrt，因而由万能的淘宝">
+<meta property="og:type" content="article">
+<meta property="og:title" content="刷机OpenWrt">
+<meta property="og:url" content="http://mylxiaoyi.github.io/2019/01/20/introduction-to-openwrt/index.html">
+<meta property="og:site_name" content="mylxiaoyi@notes">
+<meta property="og:description" content="OpenWrt作为一款优秀的开源路由系统，在为路由玩家提供多种新奇玩法的同时，也为借助智能路由器创业的年轻人提供了新的机遇。如果不想直接使用各种所谓的智能路由器，大可以自己购买支持刷机OpenWrt的路由器，自己动手折腾来打造一款满足自身需求的智能路由器。 本人并不是一名路由器玩家，确切地说，自己还只是一个路由器小白，仅是为了替换掉自己的TP-Link，同时尝鲜一下OpenWrt，因而由万能的淘宝">
+<meta property="og:locale">
+<meta property="og:image" content="http://mylxiaoyi.github.io/images/openwrt_login.png">
+<meta property="og:image" content="http://mylxiaoyi.github.io/images/openwrt_add_wan.png">
+<meta property="og:image" content="http://mylxiaoyi.github.io/images/openwrt_wan_firewall.png">
+<meta property="article:published_time" content="2019-01-20T14:16:44.000Z">
+<meta property="article:modified_time" content="2023-07-02T06:11:09.192Z">
+<meta property="article:author" content="mylxiaoyi">
+<meta property="article:tag" content="openwrt">
+<meta property="article:tag" content="network">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://mylxiaoyi.github.io/images/openwrt_login.png">
+
+<link rel="canonical" href="http://mylxiaoyi.github.io/2019/01/20/introduction-to-openwrt/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>刷机OpenWrt | mylxiaoyi@notes</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">mylxiaoyi@notes</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://mylxiaoyi.github.io/2019/01/20/introduction-to-openwrt/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="mylxiaoyi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mylxiaoyi@notes">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          刷机OpenWrt
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-01-20 22:16:44" itemprop="dateCreated datePublished" datetime="2019-01-20T22:16:44+08:00">2019-01-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-07-02 14:11:09" itemprop="dateModified" datetime="2023-07-02T14:11:09+08:00">2023-07-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/network/" itemprop="url" rel="index"><span itemprop="name">network</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a target="_blank" rel="noopener" href="https://openwrt.org/">OpenWrt</a>作为一款优秀的开源路由系统，在为路由玩家提供多种新奇玩法的同时，也为借助智能路由器创业的年轻人提供了新的机遇。如果不想直接使用各种所谓的智能路由器，大可以自己购买支持刷机OpenWrt的路由器，自己动手折腾来打造一款满足自身需求的智能路由器。</p>
+<p>本人并不是一名路由器玩家，确切地说，自己还只是一个路由器小白，仅是为了替换掉自己的TP-Link，同时尝鲜一下OpenWrt，因而由万能的淘宝上购买了一个二手的美国网件（NetGear)路由器，准备尝试自己刷机OpenWrt。</p>
+<p>NetGear到手后，连接上电源，登陆进入管理界面，见识到了NetGear的原厂固件，转念一想，那就先试一下原厂固件吧。于是简单的配置后，就通地原厂固件来网上冲浪了。</p>
+<p>我风买的这个二手NetGear带有2.4G和5G两个频段的无线接口。不过使用一段时间后发现，两个频段的无线接口都会出现手机可以连接无线网，但是无线网无法连接外网的情况，有时换着连一连，运气好的时候可以连通外网。最终让我痛下决定刷机的理由是，我的Kindle只能连接2.4G的无线网，无法连通外网，这就意味着无法接收亚马逊推送的电子书。</p>
+<p>既然购买NetGear的初衷就是为了刷机OpenWrt，那为什么还要忍受原厂的固件呢？说刷就刷，于是体验到了下面的刷机流程。</p>
+<p>首先到<a target="_blank" rel="noopener" href="https://openwrt.org/toh/start">OpenWrt官网</a>确定手中的路由器是否为OpenWrt所支持。相信你手中的路由器肯定是为OpenWrt所支持的，因为就是为了OpenWrt才买的路由器嘛。</p>
+<p>然后可以由<a target="_blank" rel="noopener" href="https://openwrt.org/docs/guide-quick-start/begin_here">OpenWrt的文档</a>开始。重点是<a target="_blank" rel="noopener" href="https://openwrt.org/docs/guide-quick-start/factory_installation">这里</a>，在这里描述了刷机的详细步骤。</p>
+<p>到<a target="_blank" rel="noopener" href="https://openwrt.org/toh/views/toh_fwdownload">固件下载页面</a>下载所需要的固件，将所下载的固件存放在本地文件夹中。</p>
+<p>通过浏览器登陆路由器，所需要的用户名和密码通常都会在路由器机身找到。登陆后进入路由器固件管理页面，找到固件刷机菜单，上传先前所下载的固件，开始刷机。耐心等待路由器重启后，即可开始体验OpenWrt。</p>
+<p>刷机后的操作可以参考<a target="_blank" rel="noopener" href="https://openwrt.org/docs/guide-quick-start/walkthrough_login">这里</a>。</p>
+<p>首次登陆OpenWrt会看到类似如下的登陆的登陆界面</p>
+<p><img src="/images/openwrt_login.png" alt="OpenWrt登陆界面"></p>
+<p>当然，在第一次登陆时会提醒设置root密码。为了安全起见，请妥善设置root密码。</p>
+<p>登陆后可以看到系统概览以及各种可以设置的功能菜单。</p>
+<p>对于我们而言，刷机后的首要操作就是连接网络了。不过相信初次接触OpenWrt的朋友会对OpenWrt的各种接口感到迷惑。当然对于熟悉Linux的朋友来说，eth0、eth1这样的名称就显得很是面熟了，这正是Linux系统中所用的网卡的名称了。对于脱胎于Linux的OpenWrt而言，也是同样如此。对于OpenWrt中的接品名称可以参考<a target="_blank" rel="noopener" href="https://openwrt.org/docs/guide-developer/networking/network.interfaces">这里</a>。</p>
+<p>OpenWrt默认的WAN口设置并不是用于拨号上网的，因而需要我们自己设置。在<code>Network-&gt;Interfaces</code>页面将默认的WAN删除。点击<code>Add new interface...</code>按钮，会进入到创建新接口的页面，在这里填写所需要的信息。接口名字填写<code>WAN</code>，由于是用于拨号上网，因而接口协议选择<code>PPPoE</code>，所用的网卡为<code>eth1</code>。如下图所示。</p>
+<p><img src="/images/openwrt_add_wan.png" alt="添加WAN口"></p>
+<p>提交之后即可进入详细设置页面，在这里填写我们宽带的用户名与密码。在这里需要提醒大家的是一定要设置WAN口的防火墙，否则会出现无法上网的情况。如下图所示。</p>
+<p><img src="/images/openwrt_wan_firewall.png" alt="WAN防火墙"></p>
+<p>经过上面的设置后，如果一切正常，我们应该可以畅快地开始网络冲浪了。当然，OpenWrt的玩法还有很多，这需要我们自己去折腾探索。如果因为操作错误导致无法连接路由器的情况时，可以通过长按<code>Reset</code>按钮来恢复出厂设置。当然，在刷机了OpenWrt后，恢复出厂设置是指恢复OpenWrt的默认设置。</p>
+<p>That’all~~ Enjoy it~~</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/openwrt/" rel="tag"># openwrt</a>
+              <a href="/tags/network/" rel="tag"># network</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/12/06/update-to-eigen-3-3-4/" rel="prev" title="升级 eigen3.3.4">
+      <i class="fa fa-chevron-left"></i> 升级 eigen3.3.4
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/01/27/some-memories-about-blog/" rel="next" title="关于博客的几点回忆">
+      关于博客的几点回忆 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">mylxiaoyi</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/mylxiaoyi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;mylxiaoyi" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/2350724865" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;2350724865" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/mylxiaoyi" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;mylxiaoyi" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mylxiaoyi</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
