@@ -155,6 +155,186 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://mylxiaoyi.github.io/2013/06/25/modify-hosts-file-on-android-with-adb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="mylxiaoyi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mylxiaoyi@notes">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2013/06/25/modify-hosts-file-on-android-with-adb/" class="post-title-link" itemprop="url">使用adb工具修改Android上的hosts文件</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2013-06-25 21:53:00" itemprop="dateCreated datePublished" datetime="2013-06-25T21:53:00+08:00">2013-06-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-07-02 14:11:09" itemprop="dateModified" datetime="2023-07-02T14:11:09+08:00">2023-07-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>国内的网络环境很差，很多的国外网站都没有办法访问，如<a target="_blank" rel="noopener" href="https://www.facebook.com/">Facebook</a>，<a target="_blank" rel="noopener" href="https://twitter.com/">Twitter</a>，而<a target="_blank" rel="noopener" href="https://www.google.com/">Google</a>的部分网站虽说可以访问，但是很多服务要么无法使用，要么不能稳定使用。为了能够稳定的访问所需要的网站，修改机器上的hosts文件是一种有效的办法，而对于Android手机，我们也可以通过修改其上的hosts文件实现对某些网站的访问。在这里推荐<a target="_blank" rel="noopener" href="http://irising.me/2011/08/9691">一篇文章</a>，有兴趣的朋友可以一试。</p>
+<p>简而言之，方法步骤如下：</p>
+<ul>
+<li>获取手机Root权限</li>
+<li>通过数据线将手机与电脑相连，并打开Android手机的调试模式</li>
+<li>获取Root权限<code>adb root</code></li>
+<li>重新挂载，获取读写权限<code>adb remount</code></li>
+<li>将手机上的hosts文件复制到电脑上<code>adb pull /system/etc/hosts</code></li>
+<li>修改hosts文件</li>
+<li>将修改后的hosts文件复制到手机上<code>adb push hosts /system/etc/hosts</code></li>
+</ul>
+<p>当然，在上面所提到的文章中还介绍了其他的方法，有兴趣的朋友可以尝试！！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://mylxiaoyi.github.io/2013/06/25/solve-the-problem-of-devtmpfs-on-debian/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="mylxiaoyi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mylxiaoyi@notes">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2013/06/25/solve-the-problem-of-devtmpfs-on-debian/" class="post-title-link" itemprop="url">解决Debian上的devtmpfs问题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2013-06-25 17:33:00" itemprop="dateCreated datePublished" datetime="2013-06-25T17:33:00+08:00">2013-06-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-07-02 14:11:09" itemprop="dateModified" datetime="2023-07-02T14:11:09+08:00">2023-07-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>其实也不单是Debian上存在这样的问题，相信在其他的发行版本中也会存在，因为问题的根源在于内核的配置。具体的表现为在Debian启动时会出现类似如下的警告：</p>
+<blockquote>
+<p>devtmpfs is not fully populated on &#x2F;dev</p>
+</blockquote>
+<p>虽然这样的警告并不会影响系统正常的开机与使用，但是每天在开机启动时都会看到这样一条警告信息毕竟会觉得不爽，Google一下，可以找到如下关于<a target="_blank" rel="noopener" href="http://wiki.linux.org.hk/w/Devtmpfs">devtmpfs</a>的说明：</p>
+<blockquote>
+<p>devtmpfs 的功用是在 Linux 核心 啟動早期建立一個初步的 &#x2F;dev，令一般啟動程式不用等待 udev，縮短 GNU&#x2F;Linux 的開機時間。devtmpfs 在 2009 年初被提出，並在同年年尾進出的 Linux 2.6.32 正式收錄。</p>
+</blockquote>
+<p>另外在<a target="_blank" rel="noopener" href="http://my.oschina.net/u/158589/blog/78569">这里</a>与<a target="_blank" rel="noopener" href="http://lwn.net/Articles/330985/">这里</a>也有关于devtmpfs的介绍与说明。</p>
+<p>知道了devtmpfs是什么，那么我们就可以在内核配置中加入对devtmpfs的支持，在.config配置文件中加入：</p>
+<pre><code>CONFIG_DEVTMPFS=y
+CONFIG_DEVTMPFS_MOUNT=y
+</code></pre>
+<p>或是使用<code>make menuconfig</code>：</p>
+<pre><code>Device Drivers  ---&gt;
+    Generic Driver Options  ---&gt;
+    [*] Maintain a devtmpfs filesystem to mount at /dev 
+    [*]   Automount devtmpfs at /dev, after the kernel mounted the root
+</code></pre>
+<p>保存配置后重新编译安装新内核，并使用新内核启动，我们就会发现，之前的警告信息不见了！！！</p>
+<p>That’s all～～Enjoy it～～</p>
+<p>PS：在经过一番更新后，我的Fcitx终于恢复正常了！！！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://mylxiaoyi.github.io/2013/06/25/something-about-gentoo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -396,7 +576,7 @@ Building site: source -&gt; public
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-count">63</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
